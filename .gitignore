@@ -11,5 +11,3 @@ gen
 node_modules
 package-lock.json
 yarn.lock
-../.gitignore
-../BackAdmin
