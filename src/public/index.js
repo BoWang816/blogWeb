@@ -18,7 +18,7 @@ export default class Main extends Component {
         return (
 			<Layout>
 				<Header className="header"><HeaderArea/></Header>
-				<Layout>
+				<Layout className="main-area">
 					<Sider className="side"><InfoArea/></Sider>
 					<Content><ContentArea/></Content>
 				</Layout>

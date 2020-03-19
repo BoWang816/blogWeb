@@ -5,14 +5,22 @@
  * @github https://github.com/BoWang816
  */
 import React, { Component } from 'react';
+import { Divider } from "antd";
+import Author from "./author";
+import Count from './count';
+import Link from "./link";
 
 export default class InfoArea extends Component {
 
     render() {
         return (
-            <div>
-                客户信息区域
-            </div>
+            <section>
+                <Author/>
+				<Divider dashed style={{ margin: '10px 0' }}/>
+                <Count/>
+				<Divider dashed style={{ margin: '10px 0' }}/>
+				<Link/>
+            </section>
         );
     };
 }

@@ -173,29 +173,29 @@ module.exports = () => {
         ],
 
         // 公共模块统一打包
-        // optimization: {
-        //     splitChunks: {
-        //         // 分割代码块
-        //         cacheGroups: {
-        //             vendor: {
-        //                 // 第三方依赖
-        //                 priority: 1, // 设置优先级，首先抽离第三方模块
-        //                 name: 'vendor',
-        //                 test: /node_modules/,
-        //                 chunks: 'initial',
-        //                 minSize: 0,
-        //                 minChunks: 1 //最少引入了1次
-        //             },
-        //             // 缓存组
-        //             common: {
-        //                 // 公共模块
-        //                 chunks: 'initial',
-        //                 name: 'common',
-        //                 minSize: 100, // 大小超过100个字节
-        //                 minChunks: 3 // 最少引入了3次
-        //             }
-        //         }
-        //     }
-        // }
+        optimization: {
+            splitChunks: {
+                // 分割代码块
+                cacheGroups: {
+                    vendor: {
+                        // 第三方依赖
+                        priority: 1, // 设置优先级，首先抽离第三方模块
+                        name: 'vendor',
+                        test: /node_modules/,
+                        chunks: 'initial',
+                        minSize: 0,
+                        minChunks: 1 //最少引入了1次
+                    },
+                    // 缓存组
+                    common: {
+                        // 公共模块
+                        chunks: 'initial',
+                        name: 'common',
+                        minSize: 100, // 大小超过100个字节
+                        minChunks: 3 // 最少引入了3次
+                    }
+                }
+            }
+        }
     };
 };
