@@ -18,9 +18,10 @@ export default class InfoArea extends Component {
                 <Author/>
 				<Divider dashed style={{ margin: '10px 0' }}/>
                 <Count/>
-				<Divider dashed style={{ margin: '10px 0' }}/>
+				<Divider orientation="left" style={{ fontSize: '14px', margin: '20px 0 4px 0' }}>我的链接</Divider>
 				<Link/>
-            </section>
+
+			</section>
         );
     };
 }

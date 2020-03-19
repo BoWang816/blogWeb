@@ -20,9 +20,9 @@ export default class Main extends Component {
 				<Header className="header"><HeaderArea/></Header>
 				<Layout className="main-area">
 					<Sider className="side"><InfoArea/></Sider>
-					<Content><ContentArea/></Content>
+					<Content style={{ padding: '20px' }}><ContentArea/></Content>
 				</Layout>
-				<Footer><FooterArea/></Footer>
+				<Footer className="footer"><FooterArea/></Footer>
 			</Layout>
         );
     };
