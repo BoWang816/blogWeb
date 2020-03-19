@@ -6,12 +6,12 @@
  */
 import React, { Component } from 'react';
 
-export default class Info extends Component {
+export default class InfoArea extends Component {
 
     render() {
         return (
             <div>
-                hello react
+                客户信息区域
             </div>
         );
     };

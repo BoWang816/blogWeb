@@ -63,7 +63,7 @@ module.exports = () => {
                             options: {
                                 // 使用插件
                                 plugins: (loader) => [
-                                    require('postcss-import')({root: loader.resourcePath}), // 支持@import 引入css
+                                    require('postcss-import')({ root: loader.resourcePath }), // 支持@import 引入css
                                     require('autoprefixer')(), //CSS浏览器兼容
                                     require('cssnano')()  //压缩css
                                 ]
@@ -74,7 +74,7 @@ module.exports = () => {
                                 sourceMap: true // 启用/禁用 Sourcemaps
                             }
                         }]
-                },
+				},
                 {
                     // 图片、字体等处理
                     test: /\.(png|jpg|jpeg|gif|webp|svg|eot|ttf|woff|woff2|ico)$/,
@@ -88,8 +88,9 @@ module.exports = () => {
                                 outputPath: 'assets' // 文件过多时输出到名称为assets的文件夹中
                             }
                         }
-                    ]
-                }
+                    ],
+					exclude: /node_modules/
+				}
             ]
         },
         externals: {
@@ -119,7 +120,7 @@ module.exports = () => {
                 '@components': resolve('./src/components')
             },
             // 文件扩展，从左到右寻找，适配不通类型的文件
-            extensions: ['.js', 'web.js', 'aa.json']
+            extensions: ['.js']
         },
 
         // 配置插件
@@ -172,29 +173,29 @@ module.exports = () => {
         ],
 
         // 公共模块统一打包
-        optimization: {
-            splitChunks: {
-                // 分割代码块
-                cacheGroups: {
-                    vendor: {
-                        // 第三方依赖
-                        priority: 1, // 设置优先级，首先抽离第三方模块
-                        name: 'vendor',
-                        test: /node_modules/,
-                        chunks: 'initial',
-                        minSize: 0,
-                        minChunks: 1 //最少引入了1次
-                    },
-                    // 缓存组
-                    common: {
-                        // 公共模块
-                        chunks: 'initial',
-                        name: 'common',
-                        minSize: 100, // 大小超过100个字节
-                        minChunks: 3 // 最少引入了3次
-                    }
-                }
-            }
-        }
+        // optimization: {
+        //     splitChunks: {
+        //         // 分割代码块
+        //         cacheGroups: {
+        //             vendor: {
+        //                 // 第三方依赖
+        //                 priority: 1, // 设置优先级，首先抽离第三方模块
+        //                 name: 'vendor',
+        //                 test: /node_modules/,
+        //                 chunks: 'initial',
+        //                 minSize: 0,
+        //                 minChunks: 1 //最少引入了1次
+        //             },
+        //             // 缓存组
+        //             common: {
+        //                 // 公共模块
+        //                 chunks: 'initial',
+        //                 name: 'common',
+        //                 minSize: 100, // 大小超过100个字节
+        //                 minChunks: 3 // 最少引入了3次
+        //             }
+        //         }
+        //     }
+        // }
     };
 };

@@ -6,19 +6,22 @@
  */
 import React, { Component } from 'react';
 import { Row, Col } from 'antd';
+import Logo from "./logo";
+import MenuArea from "./menu";
+import './style.less';
 
-export default class Header extends Component {
+export default class HeaderArea extends Component {
 
     render() {
         return (
-            <Row>
-                <Col span={18} push={6}>
-                    col-18 col-push-6
-                </Col>
-                <Col span={6} pull={18}>
-                    col-6 col-pull-18
-                </Col>
-            </Row>
+        	<Row>
+				<Col span={4}>
+					<Logo />
+				</Col>
+				<Col span={20} className="menu-area">
+					<MenuArea/>
+				</Col>
+			</Row>
         );
     };
 }

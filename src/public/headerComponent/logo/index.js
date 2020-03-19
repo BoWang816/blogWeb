@@ -1,17 +1,18 @@
 /**
  * index.js
  * @author wangbo
- * @since 2020/3/18
+ * @since 2020/3/19
  * @github https://github.com/BoWang816
  */
 import React, { Component } from 'react';
+import './style.less';
 
-export default class ContentArea extends Component {
+export default class Logo extends Component {
 
     render() {
         return (
-            <div>
-                内容区域
+            <div className="logo">
+                我是logo区域
             </div>
         );
     };
