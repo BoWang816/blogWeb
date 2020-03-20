@@ -19,8 +19,8 @@ export default class Count extends Component {
 				link: ''
 			},
 			{
-				name: '分类',
-				key: 'categoriesCount',
+				name: '归档',
+				key: 'archivesCount',
 				value: 10,
 				link: ''
 			},

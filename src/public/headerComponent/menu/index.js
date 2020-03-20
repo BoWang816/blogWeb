@@ -6,6 +6,7 @@
  */
 import React, { Component } from 'react';
 import { Menu } from 'antd';
+import { Link } from 'react-router-dom'
 import { HomeOutlined, TagOutlined, FileTextOutlined, MessageOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
 
 export default class MenuArea extends Component {
@@ -20,26 +21,31 @@ export default class MenuArea extends Component {
 			{
 				key: 'home',
 				title: '首页',
+				link: '/home',
 				icon: <HomeOutlined/>
 			},
 			{
-				key: 'classification',
-				title: '分类',
+				key: 'archives',
+				title: '归档',
+				link: '/archives',
 				icon: <FileTextOutlined/>
 			},
 			{
 				key: 'tags',
 				title: '标签',
+				link: '/tags',
 				icon: <TagOutlined/>
 			},
 			{
 				key: 'guest',
 				title: '留言',
+				link: '/guest',
 				icon: <MessageOutlined/>
 			},
 			{
 				key: 'about',
 				title: '关于',
+				link: '/about',
 				icon: <UserOutlined />
 			},
 			{
@@ -57,10 +63,11 @@ export default class MenuArea extends Component {
 				{
 					menuList.map(item => {
 						return (
-							<Menu.Item
-								key={item.key}>
-								{item.icon}
-								{item.title}
+							<Menu.Item key={item.key}>
+								<Link to={item.link}>
+									{item.icon}
+									{item.title}
+								</Link>
 							</Menu.Item>
 						);
 					})
