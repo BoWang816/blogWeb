@@ -50,7 +50,7 @@ export default class MenuArea extends Component {
 		];
 		return (
 			<Menu
-				style={{ lineHeight: 'inherit' }}
+				style={{ lineHeight: '62px', height: '65px', background: '#40cc6f' }}
 				onClick={this.handleClick}
 				selectedKeys={[this.state.current]}
 				mode="horizontal">

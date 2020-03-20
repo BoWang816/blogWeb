@@ -117,7 +117,8 @@ module.exports = () => {
             modules: ['./src/components', 'node_modules'],
             // 将包进行映射，这样就不用写很长的路径，在使用是直接 import components from "@components"即可
             alias: {
-                '@components': resolve('./src/components')
+                '@components': resolve('./src/components'),
+                '@constants': resolve('./src/common/constants')
             },
             // 文件扩展，从左到右寻找，适配不通类型的文件
             extensions: ['.js']
