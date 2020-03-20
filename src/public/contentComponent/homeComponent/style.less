@@ -1,0 +1,49 @@
+/**
+ * style.less
+ * @author wangbo
+ * @since 2020/3/20
+ * @github https://github.com/BoWang816
+ */
+
+@previewWidth: 280px;
+.article-area {
+	overflow: auto;
+	height: 100%;
+	background: #FFFFFF;
+	.article-list-item {
+		border: 1px solid #ebedf0;
+		border-radius: 4px;
+		padding: 16px 24px;
+		margin-bottom: 10px;
+		transition: all 0.2s linear;
+		&:last-child {
+			margin-bottom: 0;
+		}
+		.title {
+			color: #394d69;
+			font-size: 1.2rem;
+			font-weight: 600;
+			line-height: 1.2;
+			cursor: pointer;
+			margin-right: 10px;
+		}
+		&:hover {
+			.title {
+				color: #48b2ff;
+			}
+			background: #effbff;
+			cursor: pointer;
+			box-shadow: 4px 5px 4px #ccc;
+			transform: translate3d(0, -5px 0);
+		}
+	}
+	.pagination-area {
+		text-align: center;
+		margin: 10px 10px 20px 10px;
+		.stop-tips {
+			color: #999999;
+			font-size: 14px;
+			font-weight: 400;
+		}
+	}
+}

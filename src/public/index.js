@@ -28,7 +28,7 @@ export default class Main extends Component {
 					<Header className="header"><HeaderArea/></Header>
 					<Layout className="main-area">
 						<Sider className="side"><InfoArea/></Sider>
-						<Content style={{ padding: '20px' }}>
+						<Content style={{ padding: '20px 20px 0 20px', overflow: 'hidden' }}>
 							<Switch>{children}</Switch>
 						</Content>
 					</Layout>

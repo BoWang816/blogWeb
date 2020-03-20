@@ -15,7 +15,7 @@ export default class InfoArea extends Component {
 
     render() {
         return (
-            <section>
+            <section style={{ padding: '20px 0' }}>
                 <Author/>
 				<Divider dashed style={{ margin: '10px 0' }}/>
                 <Count/>
