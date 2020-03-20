@@ -34,9 +34,9 @@ module.exports = () => {
 					exclude: resolve('node_modules')
 				},
                 {
-                    test: /\.(jsx|js)?$/,
+                    test: /\.(jsx|js|ts)?$/,
                     // thread-loader：放置在这个 loader 之后的 loader 就会在一个单独的 worker 池中运行
-                    use: ['thread-loader', 'cache-loader', 'babel-loader'],
+                    use: ['thread-loader', 'cache-loader','babel-loader'],
                     // 不使用cache-loader的时候，可以在babel-loader的options中设置cacheDirectory: true
                     include: [path.resolve(__dirname, 'src')],
                     exclude: /node_modules/

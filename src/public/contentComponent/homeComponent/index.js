@@ -5,7 +5,7 @@
  * @github https://github.com/BoWang816
  */
 import React, { Component } from 'react';
-import { Divider, Drawer, Pagination } from "antd";
+import { Divider, Pagination } from "antd";
 import ArticleTag from '@components/articleTag';
 import { translateMarkdown } from '@utils';
 import { HOME_PAGESIZE } from '@constants';
@@ -185,18 +185,6 @@ export default class HomePage extends Component {
 					<Pagination hideOnSinglePage total={articleList.data.count} defaultPageSize={HOME_PAGESIZE}/>
 					<Divider className="stop-tips">我跟你讲，我也是有底线的^_^</Divider>
 				</div>
-
-
-				<Drawer
-					title="Basic Drawer"
-					placement="right"
-					closable={false}
-					onClose={this.onClose}
-					visible={false}>
-					<p>Some contents...</p>
-					<p>Some contents...</p>
-					<p>Some contents...</p>
-				</Drawer>
 			</section>
         );
     };
