@@ -7,8 +7,8 @@
 import React, { Component } from 'react';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom'
-import { HomeOutlined, TagOutlined, FileTextOutlined, MessageOutlined, UserOutlined, SearchOutlined } from '@ant-design/icons';
-
+import { HomeOutlined, TagOutlined, FileTextOutlined, MessageOutlined, UserOutlined } from '@ant-design/icons';
+import '../style.less';
 export default class MenuArea extends Component {
 	constructor(props) {
 		super(props);
@@ -47,16 +47,11 @@ export default class MenuArea extends Component {
 				title: '关于',
 				link: '/about',
 				icon: <UserOutlined />
-			},
-			{
-				key: 'search',
-				title: '搜索',
-				icon: <SearchOutlined />
 			}
 		];
 		return (
 			<Menu
-				style={{ lineHeight: '62px', height: '65px', background: '#40cc6f' }}
+				className="menu-list"
 				onClick={this.handleClick}
 				selectedKeys={[this.state.current]}
 				mode="horizontal">

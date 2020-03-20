@@ -12,7 +12,9 @@ export default class Logo extends Component {
     render() {
         return (
             <div className="logo">
-                我是logo区域
+				<a href="/" className="brand" rel="start">
+					<span className="site-title" style={{ opacity: '1', top: 0 }}>恪晨的小站</span>
+				</a>
             </div>
         );
     };

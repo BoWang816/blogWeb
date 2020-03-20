@@ -8,19 +8,24 @@ import React, { Component } from 'react';
 import { Row, Col } from 'antd';
 import Logo from "./logo";
 import MenuArea from "./menu";
+import Search from "./search";
 import './style.less';
-const responsiveLeft = { xxl: 4, xl: 5, lg: 5, sm: 4, xs: 24 };
-const responsiveRight = { xxl: 20, xl: 19, lg: 19, sm: 20, xs: 0 };
+const responsiveLogo = { xxl: 3, xl: 4, lg: 4, sm: 4, xs: 10 };
+const responsiveSearch = { xxl: 4, xl: 6, lg: 6, sm: 0, xs: 14 };
+const responsiveMenu = { xxl: 17, xl: 14, lg: 14, sm: 20, xs: 0 };
 
 export default class HeaderArea extends Component {
 
     render() {
         return (
         	<Row>
-				<Col {...responsiveLeft}>
+				<Col {...responsiveLogo}>
 					<Logo />
 				</Col>
-				<Col {...responsiveRight} className="menu-area">
+				<Col {...responsiveSearch}>
+					<Search />
+				</Col>
+				<Col {...responsiveMenu} className="menu-area">
 					<MenuArea/>
 				</Col>
 			</Row>
