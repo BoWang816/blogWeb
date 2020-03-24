@@ -16,18 +16,22 @@ export default class ArchivesPage extends Component {
     render() {
     	const timeList = [
 			{
+				id: 12,
 				time: '2019-12-12',
 				name: '我的第一篇文章'
 			},
 			{
+				id: 13,
 				time: '2019-12-12',
 				name: '我的第一篇文章'
 			},
 			{
+				id: 14,
 				time: '2019-12-12',
 				name: '我的第一篇文章'
 			},
 			{
+				id: 15,
 				time: '2019-12-12',
 				name: '我的第一篇文章'
 			}
@@ -35,10 +39,10 @@ export default class ArchivesPage extends Component {
         return (
         	<div className="archive-area">
 				<Timeline>
-					{timeList.map((d, i) => (
-						<Timeline.Item key={d.id} color={TAG_COLOR[Math.floor((Math.random()*10)+1)]}>
-							<span style={{ fontSize: '14px', marginRight: '16px' }}>{d.time.slice(5, 10)}</span>
-							<Link to={`/article/${d.id}`}>{d.name}</Link>
+					{timeList.map((item, i) => (
+						<Timeline.Item key={item.id} color={TAG_COLOR[Math.floor((Math.random()*10)+1)]}>
+							<span style={{ fontSize: '14px', marginRight: '16px' }}>{item.time.slice(5, 10)}</span>
+							<Link to={`/article/${item.id}`}>{item.name}</Link>
 						</Timeline.Item>
 					))}
 				</Timeline>
