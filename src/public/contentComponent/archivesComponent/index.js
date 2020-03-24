@@ -4,15 +4,45 @@
  * @since 2020/3/20
  * @github https://github.com/BoWang816
  */
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Timeline } from 'antd';
+import { TAG_COLOR } from "@constants";
+import { Link } from 'react-router-dom';
+
+import './style.less';
 
 export default class ArchivesPage extends Component {
 
     render() {
+    	const timeList = [
+			{
+				time: '2019-12-12',
+				name: '我的第一篇文章'
+			},
+			{
+				time: '2019-12-12',
+				name: '我的第一篇文章'
+			},
+			{
+				time: '2019-12-12',
+				name: '我的第一篇文章'
+			},
+			{
+				time: '2019-12-12',
+				name: '我的第一篇文章'
+			}
+		];
         return (
-            <div>
-                我是归档页面
-            </div>
+        	<div className="archive-area">
+				<Timeline>
+					{timeList.map((d, i) => (
+						<Timeline.Item key={d.id} color={TAG_COLOR[Math.floor((Math.random()*10)+1)]}>
+							<span style={{ fontSize: '14px', marginRight: '16px' }}>{d.time.slice(5, 10)}</span>
+							<Link to={`/article/${d.id}`}>{d.name}</Link>
+						</Timeline.Item>
+					))}
+				</Timeline>
+			</div>
         );
     };
 }
