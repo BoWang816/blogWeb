@@ -7,7 +7,8 @@
 *.iml
 out
 gen
-/web
 node_modules
+.vscode
 package-lock.json
 yarn.lock
+web

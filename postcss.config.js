@@ -1,11 +1,11 @@
 /**
- * postcss.config.js.js
+ * postcss.config.js
  * @author wangbo
- * @since 2020/3/16
- * @github https://github.com/BoWang816
+ * @since 2019-04-10
  */
+
 module.exports = {
-    plugins: [
-        require('autoprefixer')({overrideBrowserslist: ['Chrome > 35', 'Firefox > 30', 'Safari > 7']})
-    ]
+	plugins: [
+		require('autoprefixer')({overrideBrowserslist: ['Chrome > 35', 'Firefox > 30', 'Safari > 7']})
+	]
 };
