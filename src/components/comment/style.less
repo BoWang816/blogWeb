@@ -1,0 +1,38 @@
+/**
+ * style.js
+ * @author
+ * @since {2020/3/27}
+ * @github https://github.com/BoWang816
+ */
+.comment-area {
+	text-align: center;
+	margin: 5rem 10rem;
+	.post-body {
+		margin: inherit;
+		color: #cccccc;
+	}
+	.comment-body {
+		padding: 10px;
+		border: 1px solid #f0f0f0;
+		border-radius: 4px;
+		> input {
+			width: 30%;
+			border: none;
+			outline: none;
+			border-bottom: 1px dashed #dedede;
+			margin-right: 3%;
+			&:focus {
+				outline: none;
+			}
+		}
+		.comment-content {
+			margin-top: 20px;
+			border: none;
+			margin-bottom: 10px;
+		}
+	}
+	.comment-list {
+		text-align: left;
+		margin-top: 20px;
+	}
+}

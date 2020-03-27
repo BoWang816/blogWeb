@@ -5,13 +5,13 @@
  * @github https://github.com/BoWang816
  */
 import React, { Component } from 'react';
-
+import CommentArea from "@components/comment";
 export default class GuestPage extends Component {
 
     render() {
         return (
-            <div>
-                我是留言页面
+            <div style={{ height: "100%", overflow: "auto" }}>
+				<CommentArea/>
             </div>
         );
     };
