@@ -4,7 +4,7 @@
  * @since 2020/3/20
  * @github https://github.com/BoWang816
  */
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Timeline } from 'antd';
 import { TAG_COLOR } from "@constants";
 import { Link } from 'react-router-dom';
