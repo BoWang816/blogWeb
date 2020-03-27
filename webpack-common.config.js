@@ -6,6 +6,7 @@
  */
 
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VersionPlugin = require('generate-version-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -100,7 +101,8 @@ module.exports = () => {
 				'@assets': resolve('src/assets'),
 				'@utils': resolve('src/common/utils')
 			},
-			extensions: ['.js', '.jsx', '.ts', '.tsx']
+			extensions: ['.js', '.jsx', '.ts', '.tsx'],
+			modules: [resolve(__dirname, './src'), 'node_modules']
 		},
 
 		plugins: [
@@ -140,8 +142,16 @@ module.exports = () => {
 				}
 			}),
 
-			new MiniCssExtractPlugin(),
+			// 抽离css
+			new MiniCssExtractPlugin({
+				filename: '[name].css',
+				chunkFilename: '[name].css'
+			}),
 
+			// 打包进度
+			new webpack.ProgressPlugin(),
+
+			// 清除包
 			new CleanWebpackPlugin()
 		]
 	}

@@ -43,6 +43,7 @@ const devConfig = {
 	},
 
 	plugins: [
+		// 热加载
 		new webpack.HotModuleReplacementPlugin()
 	]
 };
