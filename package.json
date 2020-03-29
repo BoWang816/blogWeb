@@ -3,8 +3,9 @@
 	"version": "0.0.1",
 	"main": "./src/index.js",
 	"scripts": {
-		"start": "cross-env NODE_ENV=qa webpack-dev-server --config=webpack-dev.config.js",
-		"build": "cross-env NODE_ENV=production webpack --config=webpack-pro.config.js"
+		"start": "npm run clean && cross-env NODE_ENV=qa webpack-dev-server --config=webpack-dev.config.js",
+		"build": "npm run clean && cross-env NODE_ENV=production webpack --config=webpack-pro.config.js",
+		"clean": "rimraf web"
 	},
 	"dependencies": {
 		"antd": "^4.0.4",
@@ -64,6 +65,7 @@
 		"less": "^3.11.1",
 		"less-loader": "^5.0.0",
 		"marked": "^0.8.1",
+		"rimraf": "^3.0.2",
 		"mini-css-extract-plugin": "^0.9.0",
 		"optimize-css-assets-webpack-plugin": "^5.0.3",
 		"postcss-import": "^12.0.1",
