@@ -28,7 +28,7 @@ class Author extends Component {
 
     render() {
     	const authorList = {
-    		headerImg: 'https://file.wangboweb.site/logo.png',
+    		headerImg: 'https://file.wangboweb.site/logo.jpeg',
 			name: '恪晨',
 			motto: 'EveryThing Will OK!'
 		};
