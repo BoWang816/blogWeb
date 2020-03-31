@@ -10,7 +10,13 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VersionPlugin = require('generate-version-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// 中间缓存
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const packageList = require("./package.json");
+
 const resolve = dir => path.resolve(__dirname, dir);
 
 module.exports = () => {
@@ -86,7 +92,10 @@ module.exports = () => {
 			]
 		},
 
-		entry: ['@babel/polyfill', './src/index.js'],
+		entry: {
+			index: './src/index.js',
+			vendor: Object.keys(packageList.dependencies) // 获取生产环境依赖的库
+		},
 
 		output: {
 			path: path.resolve(__dirname, 'web'),
@@ -103,6 +112,28 @@ module.exports = () => {
 			},
 			extensions: ['.js', '.jsx', '.ts', '.tsx'],
 			modules: [resolve(__dirname, './src'), 'node_modules']
+		},
+
+		optimization: {
+			splitChunks: {
+				chunks: "async",
+				minSize: 30000,
+				minChunks: 2, // 默认值是2, 模块被多少个chunk公共引用才被抽取出来成为commons chunk
+				maxAsyncRequests: 5,
+				maxInitialRequests: 3,
+				automaticNameDelimiter: '~',
+				name: true,
+				cacheGroups: {
+					vendors: {
+						test: /[\\/]node_modules[\\/]/,
+						priority: 1, //设置优先级，首先抽离第三方模块
+						name: 'vendor',
+						chunks: 'initial',
+						minSize: 0,
+						minChunks: 1 //最少引入了1次
+					}
+				}
+			}
 		},
 
 		plugins: [
@@ -152,7 +183,24 @@ module.exports = () => {
 			new webpack.ProgressPlugin(),
 
 			// 清除包
-			new CleanWebpackPlugin()
+			new CleanWebpackPlugin(),
+
+			// 按需打包
+			new LodashModuleReplacementPlugin(),
+
+			// 首次打包需要49秒，第二次14秒，第三次5秒，但是耗性能
+			new HardSourceWebpackPlugin(),
+
+			// js压缩
+			new ParallelUglifyPlugin({
+				uglifyJS: {},
+				test: /.js$/g, // 匹配哪些文件需要被 ParallelUglifyPlugin 压缩，默认是 /.js$/.
+				include: [], // 包含被 ParallelUglifyPlugin 压缩的文件，默认为 [].
+				exclude: [], // 不被 ParallelUglifyPlugin 压缩的文件，默认为 [].
+				cacheDir: '', // 缓存压缩后的结果，下次遇到一样的输入时直接从缓存中获取压缩后的结果并返回
+				workerCount: '', // 开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1。
+				sourceMap: false
+			})
 		]
 	}
 };
