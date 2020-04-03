@@ -14,7 +14,7 @@ const serverConfig = require('./server-config');
 
 const { mockServer } = require('./src/common/utils/mockConfig');
 
-const serverMock =  serverConfig.useMock ? {
+const serverMock = serverConfig.useMock ? {
 	before: app => mockServer(path.resolve(__dirname, './mock'), app, { apiPrefix: serverConfig.apiPrefix }),
 } : {
 	proxy: {
@@ -47,7 +47,11 @@ const devConfig = {
 		// 热加载
 		new webpack.HotModuleReplacementPlugin(),
 
-		new webpackBundleAnalyzer()
+		new webpackBundleAnalyzer(
+			{
+				openAnalyzer: false
+			}
+		)
 	]
 };
 
