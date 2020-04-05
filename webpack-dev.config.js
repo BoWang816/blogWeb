@@ -49,7 +49,8 @@ const devConfig = {
 
 		new webpackBundleAnalyzer(
 			{
-				openAnalyzer: false
+				openAnalyzer: false,
+				port: 8889
 			}
 		)
 	]
