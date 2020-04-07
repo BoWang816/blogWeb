@@ -103,7 +103,7 @@
 	"lint-staged": {
 		"src/**/*.{js,less}": [
 			"pretty-quick —-staged",
-			"git add"
+			"git add ."
 		]
 	},
 	"repository": {
