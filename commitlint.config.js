@@ -7,19 +7,18 @@
 module.exports = {
 	extends: ['@commitlint/config-conventional'],
 	rules: {
-		'type-enum': [2, 'always',
+		'type-enum': [
+			2,
+			'always',
 			[
-				'build',
-				'ci',
-				'chore',
-				'docs',
-				'feat',
-				'fix',
-				'perf',
-				'refactor',
-				'revert',
-				'style',
-				'test'
+				'docs', // 文档
+				'feat', // 新功能
+				'fix', // bug
+				'chore', // 构建过程或辅助工具的变动
+				'refactor', // 重构
+				'revert', // 回退
+				'style', // 样式
+				'test', // 测试
 			],
 		],
 		'type-case': [0, 'always'], // 提交类型
@@ -27,6 +26,6 @@ module.exports = {
 		'subject-full-stop': [0, 'never'],
 		'subject-case': [0, 'never'], // 提交信息格式
 		'subject-empty': [0, 'never'], // 提交信息不能为空
-		'header-max-length': [0, 'always', 72]
-	}
+		'header-max-length': [0, 'always', 72],
+	},
 };

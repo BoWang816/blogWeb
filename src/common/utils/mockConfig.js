@@ -15,9 +15,9 @@ function findSync(startPath) {
 		let file = path.join(startPath, val);
 		let stats = fs.statSync(file);
 
-		if(stats.isDirectory()) {
-			result.push(...findSync(file))
-		} else if(stats.isFile()) {
+		if (stats.isDirectory()) {
+			result.push(...findSync(file));
+		} else if (stats.isFile()) {
 			result.push(file);
 		}
 	});
@@ -66,13 +66,12 @@ function prefixer(prefix, obj) {
 	return Object.entries(obj).reduce((acc, entry) => {
 		const [url, config] = entry;
 		const newUrl = url.startsWith(prefix) ? url : prefix + url;
-		return { ...acc, [newUrl]: config }
+		return { ...acc, [newUrl]: config };
 	}, {});
-};
+}
 
 const log = (msg, color = '32m') => {
 	console.log('-'.repeat(msg.length + 2));
-	console.log('\033[40;'+ color +' '+ msg +' \033[0m');;
 	console.log('-'.repeat(msg.length + 2));
 };
 
@@ -94,7 +93,7 @@ const mockServer = (mockFolder, app, config = {}) => {
 		const basename = path.basename(dir);
 
 		// 这里是留了一个hack，以便于在pathPrefix的模式中，混合使用普通模式，避开文件和目录引起的前缀
-		result = prefix && !(basename.startsWith('_')) ? prefixer(prefix, result) : result;
+		result = prefix && !basename.startsWith('_') ? prefixer(prefix, result) : result;
 
 		analyze(result, app);
 	});
@@ -103,5 +102,5 @@ const mockServer = (mockFolder, app, config = {}) => {
 };
 
 module.exports = {
-	mockServer
+	mockServer,
 };
