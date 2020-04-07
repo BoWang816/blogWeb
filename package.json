@@ -111,7 +111,6 @@
 			"eslint --fix",
 			"pretty-quick —-staged",
 			"prettier --write",
-			"git status",
 			"git add ."
 		]
 	},
