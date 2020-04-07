@@ -107,8 +107,9 @@
 	"lint-staged": {
 		"src/**/*": [
 			"npm run precommit",
-			"pretty-quick —-staged",
 			"eslint --fix",
+			"pretty-quick —-staged",
+			"prettier --write",
 			"git add"
 		]
 	},
