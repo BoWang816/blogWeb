@@ -5,7 +5,9 @@
 	"scripts": {
 		"start": "npm run clean && cross-env NODE_ENV=qa webpack-dev-server --config=webpack-dev.config.js --open --inline",
 		"build": "npm run clean && cross-env NODE_ENV=production webpack --config=webpack-pro.config.js",
-		"clean": "rimraf web"
+		"clean": "rimraf web",
+		"precommit": "npm run lint",
+		"lint": "eslint src"
 	},
 	"dependencies": {
 		"antd": "^4.0.4",
