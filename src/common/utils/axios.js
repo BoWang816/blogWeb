@@ -1,15 +1,14 @@
-import axios
-	from 'axios'
-import { API_BASE_URL } from '@/config'
+import axios from 'axios';
+import { message } from 'antd';
+import { getToken } from '@utils';
 
-import { message } from 'antd'
-import { getToken } from '@/utils'
+import { apiPrefix } from '../../../server-config';
 
 // create an axios instance
 const service = axios.create({
-	baseURL: API_BASE_URL,
+	baseURL: apiPrefix,
 	// withCredentials: true, // send cookies when cross-domain requests
-	timeout: 10000 // request timeout
+	timeout: 10000, // request timeout
 });
 
 let timer;
@@ -19,13 +18,13 @@ service.interceptors.request.use(
 	config => {
 		const token = getToken();
 		if (token) {
-			config.headers.common['Authorization'] = token
+			config.headers.common.Authorization = token;
 		}
-		return config
+		return config;
 	},
 	error => {
 		message.error('bed request');
-		Promise.reject(error)
+		Promise.reject(error);
 	}
 );
 
@@ -33,7 +32,7 @@ service.interceptors.request.use(
 service.interceptors.response.use(
 	response => {
 		// Any status code that lie within the range of 2xx cause this function to trigger
-		return response.data
+		return response.data;
 	},
 	err => {
 		// Any status codes that falls outside the range of 2xx cause this function to trigger
@@ -48,14 +47,14 @@ service.interceptors.response.use(
 
 					default:
 						message.error(data.message || `连接错误 ${status}！`);
-						break
+						break;
 				}
 			} else {
-				message.error(err.message)
+				message.error(err.message);
 			}
 		}, 200); // 200 毫秒内重复报错则只提示一次！
 
-		return Promise.reject(err)
+		return Promise.reject(err);
 	}
 );
 

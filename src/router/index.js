@@ -5,18 +5,16 @@
  * @github https://github.com/BoWang816
  */
 
-import Layout from "../public";
-import ArchivesPage from "../public/contentComponent/archivesComponent";
-import ArticlePage from "../public/contentComponent/articleComponent";
-import GuestPage from "../public/contentComponent/guestComponent";
-import TagPage from "../public/contentComponent/tagComponent";
-import PageNotFound from "@components/404";
-import HomePage from "../public/contentComponent/homeComponent";
+import PageNotFound from '@components/404';
+import ArchivesPage from '../public/content/archives';
+import ArticlePage from '../public/content/article';
+import GuestPage from '../public/content/guest';
+import TagPage from '../public/content/tag';
+import HomePage from '../public/content/home';
 
 export default {
 	path: '/',
 	name: 'home',
-	component: Layout,
 	childRoutes: [
 		{ path: '/', component: HomePage, exact: true },
 		{ path: '/home', component: HomePage },
@@ -25,6 +23,6 @@ export default {
 		{ path: '/tags', component: TagPage },
 		{ path: '/tags/:name', component: TagPage },
 		{ path: '/guest', component: GuestPage },
-		{ path: '*', component: PageNotFound }
-	]
-}
+		{ path: '*', component: PageNotFound },
+	],
+};

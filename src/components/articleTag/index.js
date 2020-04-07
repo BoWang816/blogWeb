@@ -5,16 +5,16 @@
  * @github https://github.com/BoWang816
  */
 import React, { Component } from 'react';
-import { Divider, Tag } from "antd";
-import { Link } from "react-router-dom";
+import { Divider, Tag } from 'antd';
+import { Link } from 'react-router-dom';
 import { calcCommentsCount } from '@utils';
 import { EyeOutlined, TagsTwoTone, FolderOutlined, CommentOutlined } from '@ant-design/icons';
-import { TAG_COLOR } from "@constants";
+import { TAG_COLOR } from '@constants';
 
 export default class ArticleTag extends Component {
 	render() {
 		const { tagList, categoryList, viewCount, comments } = this.props;
-        return (
+		return (
 			<>
 				<CommentOutlined />
 				<span style={{ marginRight: 5 }}> {calcCommentsCount(comments)}</span>
@@ -25,8 +25,8 @@ export default class ArticleTag extends Component {
 					<>
 						<Divider type="vertical" style={{ marginRight: 7 }} />
 						<TagsTwoTone style={{ marginRight: '5px' }} />
-						{tagList.map((tag, i) => (
-							<Tag key={i} color={TAG_COLOR[Math.floor((Math.random()*10) + 1)]}>
+						{tagList.map(tag => (
+							<Tag key={tag} color={TAG_COLOR[Math.floor(Math.random() * 10 + 1)]}>
 								<Link to={`/tags/${tag}`}>{tag}</Link>
 							</Tag>
 						))}
@@ -35,15 +35,15 @@ export default class ArticleTag extends Component {
 				{categoryList.length > 0 && (
 					<>
 						<Divider type="vertical" style={{ marginRight: 7 }} />
-						<FolderOutlined style={{ marginRight: '5px' }}/>
-						{categoryList.map((cate, i) => (
-							<Tag key={i} color={TAG_COLOR[Math.floor((Math.random()*10) + 1)]}>
+						<FolderOutlined style={{ marginRight: '5px' }} />
+						{categoryList.map(cate => (
+							<Tag key={cate} color={TAG_COLOR[Math.floor(Math.random() * 10 + 1)]}>
 								<Link to={`/categories/${cate}`}>{cate}</Link>
 							</Tag>
 						))}
 					</>
 				)}
 			</>
-        );
-    };
+		);
+	}
 }

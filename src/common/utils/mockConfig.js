@@ -4,16 +4,17 @@
  * @since {2020/3/26}
  * @github https://github.com/BoWang816
  */
-const fs = require('fs');
+
 const path = require('path');
+const fs = require('fs');
 
 function findSync(startPath) {
-	let result = [];
-	let files = fs.readdirSync(startPath);
+	const result = [];
+	const files = fs.readdirSync(startPath);
 
 	files.forEach(val => {
-		let file = path.join(startPath, val);
-		let stats = fs.statSync(file);
+		const file = path.join(startPath, val);
+		const stats = fs.statSync(file);
 
 		if (stats.isDirectory()) {
 			result.push(...findSync(file));
@@ -70,7 +71,7 @@ function prefixer(prefix, obj) {
 	}, {});
 }
 
-const log = (msg, color = '32m') => {
+const log = msg => {
 	console.log('-'.repeat(msg.length + 2));
 	console.log('-'.repeat(msg.length + 2));
 };
@@ -84,9 +85,9 @@ const mockServer = (mockFolder, app, config = {}) => {
 
 		let prefix = apiPrefix;
 		if (usePathPrefix) {
-			prefix = prefix + pathPrefix; // 只有设置了pathPrefix才和apiPrefix相加，防止apiPrefix写成正则的方式
+			prefix += pathPrefix; // 只有设置了pathPrefix才和apiPrefix相加，防止apiPrefix写成正则的方式
 		} else if (useDirPrefix) {
-			prefix = prefix + dirPrefix; // 只有设置了pathPrefix才和apiPrefix相加，防止apiPrefix写成正则的方式
+			prefix += dirPrefix; // 只有设置了pathPrefix才和apiPrefix相加，防止apiPrefix写成正则的方式
 		}
 		prefix = typeof prefix === 'string' ? prefix.trim() : prefix;
 

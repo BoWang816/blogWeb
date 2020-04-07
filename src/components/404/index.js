@@ -6,10 +6,10 @@
  */
 import React, { Component } from 'react';
 import { Result, Button } from 'antd';
-export default class PageNotFound extends Component {
 
-    render() {
-        return (
+export default class PageNotFound extends Component {
+	render() {
+		return (
 			<Result
 				status="404"
 				title="404"
@@ -24,6 +24,6 @@ export default class PageNotFound extends Component {
 					</Button>
 				}
 			/>
-        );
-    };
+		);
+	}
 }

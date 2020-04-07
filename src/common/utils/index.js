@@ -1,6 +1,8 @@
 import marked from 'marked';
 import xss from 'xss';
+import hljs from 'highlight.js';
 import { get } from '@utils/storage';
+import { TAG_COLOR } from '@constants';
 
 // 转化 md 语法为 html
 export const translateMarkdown = (plainText, isGuardXss = false) => {
@@ -13,8 +15,7 @@ export const translateMarkdown = (plainText, isGuardXss = false) => {
 		breaks: true,
 		smartLists: true,
 		smartypants: true,
-		highlight: function (code) {
-			/*eslint no-undef: "off"*/
+		highlight(code) {
 			return hljs.highlightAuto(code).value;
 		},
 	});
@@ -26,7 +27,10 @@ export const decodeQuery = url => {
 	const paramsStr = url.replace(/\.*\?/, ''); // a=1&b=2&c=&d=xxx&e
 	paramsStr.split('&').forEach(v => {
 		const d = v.split('=');
-		if (d[1] && d[0]) params[d[0]] = d[1];
+		if (d[1] && d[0]) {
+			// todo
+			// params[d[0]] = d[1];
+		}
 	});
 	return params;
 };
@@ -73,7 +77,7 @@ export function getToken() {
 	const userInfo = get('userInfo');
 
 	if (userInfo && userInfo.token) {
-		token = 'Bearer ' + userInfo.token;
+		token = `Bearer${userInfo.token}`;
 	}
 
 	return token;
@@ -82,28 +86,14 @@ export function getToken() {
 /**
  * 生成随机 ID
  * @param {Number} len - 长度
+ * @return {string}
  */
 export function RandomId(len) {
 	return Math.random().toString(36).substr(3, len);
 }
 
-/**
- * debounce
- */
-export function debounce(func, wait) {
-	let timer = null;
-	return function () {
-		const context = this;
-		const args = arguments;
-		clearTimeout(timer);
-		timer = setTimeout(function () {
-			func.apply(context, args);
-		}, wait);
-	};
-}
-
 // 生成 color
-export function genertorColor(list = [], colorList = COLOR_LIST) {
+export function genertorColor(list = [], colorList = TAG_COLOR) {
 	const _list = [...list];
 	_list.forEach((l, i) => {
 		l.color = colorList[i] || colorList[randomIndex(colorList)];
