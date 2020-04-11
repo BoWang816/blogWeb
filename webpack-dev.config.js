@@ -21,7 +21,7 @@ const serverMock = serverConfig.useMock
 	: {
 			proxy: {
 				[serverConfig.apiPrefix]: {
-					target: `${serverConfig.apiUri}`,
+					target: `${serverConfig.apiUri}:${serverConfig.apiPort}`,
 					secure: false,
 					changeOrigin: true,
 				},
