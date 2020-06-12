@@ -6,9 +6,8 @@
 		"start": "npm run precommit && cross-env NODE_ENV=qa webpack-dev-server --config=webpack-dev.config.js --open --inline",
 		"build": "npm run precommit && cross-env NODE_ENV=production webpack --config=webpack-pro.config.js",
 		"clean": "rimraf web",
-		"style": "stylelint 'src/**/*.less' --fix",
 		"lint": "eslint src",
-		"precommit": "npm run clean && npm run lint && npm run style"
+		"precommit": "npm run clean && npm run lint"
 	},
 	"dependencies": {
 		"antd": "^4.0.4",
@@ -63,8 +62,8 @@
 		"eslint-plugin-react": "^7.19.0",
 		"eslint-plugin-react-hooks": "^2.5.0",
 		"file-loader": "^5.1.0",
+		"friendly-errors-webpack-plugin": "^1.7.0",
 		"generate-version-webpack-plugin": "^0.1.3",
-		"hard-source-webpack-plugin": "^0.13.1",
 		"highlight.js": "^9.18.1",
 		"history": "^4.10.1",
 		"html-webpack-plugin": "^3.2.0",
@@ -85,7 +84,6 @@
 		"rimraf": "^3.0.2",
 		"speed-measure-webpack-plugin": "^1.3.1",
 		"style-loader": "^1.1.3",
-		"stylelint": "^13.3.0",
 		"terser-webpack-plugin": "^2.3.5",
 		"thread-loader": "^2.1.3",
 		"url-loader": "^3.0.0",
@@ -108,7 +106,7 @@
 		}
 	},
 	"lint-staged": {
-		"src/**/*.{js,less}": [
+		"src/**/*.{js}": [
 			"prettier --write",
 			"pretty-quick —-staged",
 			"git add ."
