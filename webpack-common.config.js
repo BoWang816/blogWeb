@@ -8,7 +8,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const VersionPlugin = require('generate-version-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -23,12 +22,6 @@ module.exports = () => {
 			// 如果一些第三方模块没有AMD/CommonJS规范版本，可以使用 noParse 来标识这个模块，但是webpack不进行转化和解析
 			// noParse: [],
 			rules: [
-				{
-					enforce: 'pre',
-					test: /\.jsx?$/,
-					use: 'eslint-loader',
-					exclude: resolve('node_modules'),
-				},
 				{
 					test: /\.(jsx|js)?$/,
 					// thread-loader：放置在这个 loader 之后的 loader 就会在一个单独的 worker 池中运行
@@ -115,31 +108,9 @@ module.exports = () => {
 			modules: [resolve(__dirname, './src'), 'node_modules'],
 		},
 
-		optimization: {
-			splitChunks: {
-				chunks: 'async',
-				minSize: 30000,
-				minChunks: 2, // 默认值是2, 模块被多少个chunk公共引用才被抽取出来成为commons chunk
-				maxAsyncRequests: 5,
-				maxInitialRequests: 3,
-				automaticNameDelimiter: '~',
-				name: true,
-				cacheGroups: {
-					vendors: {
-						test: /[\\/]node_modules[\\/]/,
-						priority: 1, // 设置优先级，首先抽离第三方模块
-						name: 'vendor',
-						chunks: 'initial',
-						minSize: 0,
-						minChunks: 1, // 最少引入了1次
-					},
-				},
-			},
-		},
-
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: "wb 's blog",
+				title: 'wb \'s blog',
 				template: './src/public/index.html',
 				// 打包出来的文件名称
 				filename: 'index.html',
@@ -149,28 +120,6 @@ module.exports = () => {
 				minify: {
 					removeAttributeQuotes: false, // 是否删除属性的双引号
 					collapseWhitespace: true, // 是否折叠空白
-				},
-			}),
-
-			// 版本信息插件
-			new VersionPlugin({
-				// 指定版本信息数据的绝对路径, 必设项。 [默认值使用数据为插件自身的版本信息]
-				dataPath: path.join(__dirname, './version.json'),
-
-				// 配置version.json 中 的list.type 值文本对应关系 [当前展示的为默认值]
-				type: {
-					'1': {
-						text: '新增',
-						style: 'color: green',
-					},
-					'2': {
-						text: '修复',
-						style: 'color: red',
-					},
-					'3': {
-						text: '优化',
-						style: 'color: orange',
-					},
 				},
 			}),
 
@@ -188,9 +137,6 @@ module.exports = () => {
 
 			// 按需打包
 			new LodashModuleReplacementPlugin(),
-
-			// 首次打包需要49秒，第二次14秒，第三次5秒，但是耗性能
-			// new HardSourceWebpackPlugin(),
 
 			// js压缩
 			new ParallelUglifyPlugin({

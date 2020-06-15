@@ -6,34 +6,45 @@
  */
 
 const merge = require('webpack-merge');
-const commonConfig = require('./webpack-common.config');
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const commonConfig = require('./webpack-common.config');
+
 const smp = new SpeedMeasurePlugin();
 
 const MainConfig = {
-	mode: "production",
+	mode: 'production',
 	// 控制是否生成，以及如何生成 source map，配置项很多，cheap-module-eval-source-map表示原始源代码（仅限行）
-	devtool: "none",
+	devtool: 'none',
 
-	// 压缩文件
+	// 代码优化配置
 	optimization: {
-		minimize: true,
-		minimizer: [new TerserWebpackPlugin({
-			cache: true,
-		})]
-	},
-	plugins: [
-		// css压缩
-		new OptimizeCssAssetsPlugin({
-			cssProcessor: require('cssnano'),
-			cssProcessorPluginOptions: {
-				preset: ['default', { discardComments: { removeAll: true } }],
-			},
-			canPrint: true
-		}),
-	]
+		minimizer: [
+			// 压缩js
+			new TerserWebpackPlugin({
+				cache: true,
+				parallel: true,
+				terserOptions: {
+					output: {
+						comments: false,
+					},
+				},
+				extractComments: false,
+			}),
+
+			// 压缩css
+			new OptimizeCssAssetsPlugin({
+				assetNameRegExp: /\.css$/g,
+				cssProcessor: require('cssnano'),
+				cssProcessorOptions: {
+					discardComments: { removeAll: true },
+					minifyGradients: true,
+				},
+				canPrint: true,
+			}),
+		],
+	}
 };
 
 // smp.wrap loader所用打包时间
