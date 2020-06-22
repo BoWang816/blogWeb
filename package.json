@@ -10,15 +10,8 @@
 		"precommit": "npm run clean && npm run lint"
 	},
 	"dependencies": {
-		"antd": "^4.0.4",
 		"@ant-design/icons": "^4.0.5",
-		"wbaxios": "^1.0.0",
-		"mobx": "^5.15.4",
-		"mobx-react": "^6.1.8",
-		"axios": "^0.19.2",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1",
-		"react-router-dom": "^5.1.2"
+		"wbaxios": "^1.0.0"
 	},
 	"author": "bo.wang",
 	"private": true,
@@ -91,7 +84,6 @@
 		"webpack-cli": "^3.3.11",
 		"webpack-dev-server": "^3.10.3",
 		"webpack-merge": "^4.2.2",
-		"webpack-parallel-uglify-plugin": "^1.1.2",
 		"xss": "^1.0.6",
 		"yargs": "^15.3.1"
 	},

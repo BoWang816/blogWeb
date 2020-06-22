@@ -20,11 +20,19 @@ const MainConfig = {
 
 	// 代码优化配置
 	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				default: {
+					name: 'lib',
+					chunks: 'initial'
+				}
+			}
+		},
 		minimizer: [
 			// 压缩js
 			new TerserWebpackPlugin({
 				cache: true,
-				parallel: true,
+				parallel: false,
 				terserOptions: {
 					output: {
 						comments: false,

@@ -9,10 +9,8 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
-const packageList = require('./package.json');
 
 const resolve = dir => path.resolve(__dirname, dir);
 
@@ -87,14 +85,14 @@ module.exports = () => {
 		},
 
 		entry: {
-			index: './src/index.js',
-			vendor: Object.keys(packageList.dependencies), // 获取生产环境依赖的库
+			index: './src/index.js'
 		},
 
 		output: {
 			path: path.resolve(__dirname, 'web'),
 			filename: '[name]_[hash:6].js',
 			publicPath: '/',
+			chunkFilename: '[name].[chunkHash:8].js',
 		},
 
 		resolve: {
@@ -102,11 +100,25 @@ module.exports = () => {
 				'@components': resolve('src/components'),
 				'@constants': resolve('src/common/constants'),
 				'@assets': resolve('src/assets'),
-				'@utils': resolve('src/common/utils'),
+				'@utils': resolve('src/common/utils')
 			},
 			extensions: ['.js', '.jsx', '.ts', '.tsx'],
 			modules: [resolve(__dirname, './src'), 'node_modules'],
 		},
+
+		externals: [
+			{
+				moment: 'moment',
+				react: 'React',
+				'react-dom': 'ReactDOM',
+				'react-router': 'ReactRouter',
+				'react-router-dom': 'ReactRouterDOM',
+				mobx: 'mobx',
+				'mobx-react': 'mobxReact',
+				axios: 'axios',
+				antd: 'antd'
+			}
+		],
 
 		plugins: [
 			new HtmlWebpackPlugin({
@@ -138,16 +150,8 @@ module.exports = () => {
 			// 按需打包
 			new LodashModuleReplacementPlugin(),
 
-			// js压缩
-			new ParallelUglifyPlugin({
-				uglifyJS: {},
-				test: /.js$/g, // 匹配哪些文件需要被 ParallelUglifyPlugin 压缩，默认是 /.js$/.
-				include: [], // 包含被 ParallelUglifyPlugin 压缩的文件，默认为 [].
-				exclude: [], // 不被 ParallelUglifyPlugin 压缩的文件，默认为 [].
-				cacheDir: '', // 缓存压缩后的结果，下次遇到一样的输入时直接从缓存中获取压缩后的结果并返回
-				workerCount: '', // 开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1。
-				sourceMap: false,
-			}),
+			// moment插件优化打包
+			new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
 		],
 	};
 };
