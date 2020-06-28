@@ -123,6 +123,10 @@ module.exports = () => {
 		],
 
 		plugins: [
+			new CleanWebpackPlugin({
+				cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, 'web')],
+			}),
+
 			new HtmlWebpackPlugin({
 				title: 'wb \'s blog',
 				template: './src/public/index.html',
@@ -143,11 +147,8 @@ module.exports = () => {
 				chunkFilename: '[name].css',
 			}),
 
-			// 打包进度
+			// 构建进度
 			new webpack.ProgressPlugin(),
-
-			// 清除包
-			new CleanWebpackPlugin(),
 
 			// 按需打包
 			new LodashModuleReplacementPlugin(),
