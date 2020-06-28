@@ -20,13 +20,30 @@ const MainConfig = {
 
 	// 代码优化配置
 	optimization: {
+		runtimeChunk: 'single',
 		splitChunks: {
+			chunks: 'all',
+			maxInitialRequests: Infinity,
+			minSize: 0,
 			cacheGroups: {
+				vendor: {
+					test: /[\\/]node_modules[\\/]/,
+					name(module) {
+						// get the name. E.g. node_modules/packageName/not/this/part.js
+						// or node_modules/packageName
+						const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+
+						// npm package names are URL-safe, but some servers don't like @ symbols
+						return `libs.${packageName.replace('@', '')}`;
+					},
+				},
 				default: {
-					name: 'lib',
-					chunks: 'initial'
+					name: 'common_libs',
+					minChunks: 1,
+					priority: -20,   // 优先级配置项
+					reuseExistingChunk: true
 				}
-			}
+			},
 		},
 		minimizer: [
 			// 压缩js

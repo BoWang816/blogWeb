@@ -1,12 +1,11 @@
 import marked from 'marked';
-import xss from 'xss';
 import hljs from 'highlight.js';
 import { get } from '@utils/storage';
 import { TAG_COLOR } from '@constants';
 
 // 转化 md 语法为 html
-export const translateMarkdown = (plainText, isGuardXss = false) => {
-	return marked(isGuardXss ? xss(plainText) : plainText, {
+export const translateMarkdown = plainText => {
+	return marked(plainText, {
 		renderer: new marked.Renderer(),
 		gfm: true,
 		pedantic: false,
