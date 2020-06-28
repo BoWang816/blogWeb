@@ -117,6 +117,7 @@ module.exports = () => {
 				'mobx-react': 'mobxReact',
 				axios: 'axios',
 				antd: 'antd',
+				'marked': 'marked',
 				'highlight.js': 'hljs'
 			}
 		],
