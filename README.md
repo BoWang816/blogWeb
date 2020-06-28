@@ -5,7 +5,7 @@
 
 ### 🏠 [Homepage](https://github.com/BoWang816/blogWeb)
 
-### ✨ [Demo](https://github.com/BoWang816/blogWeb)
+### ✨ [Demo](https://web.wangboweb.ml)
 
 ## Install
 
@@ -17,6 +17,11 @@ npm install
 
 ```sh
 npm run start
+```
+
+##
+```html
+http://localhost:3000
 ```
 
 ## Author
