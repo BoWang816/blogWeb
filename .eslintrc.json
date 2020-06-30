@@ -1,5 +1,5 @@
 {
-	"extends": ["airbnb", "prettier", "prettier/react"],
+	"extends": ["airbnb", "prettier", "prettier/react", "eslint:recommended"],
 	"plugins": ["prettier"],
 	"settings": {
 		"import/resolver": {
@@ -15,6 +15,13 @@
 				"extensions": [".js", ".jsx"]
 			}
 		],
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto",
+				"trailingComma": "none"
+			}
+		],
 		"react/prefer-stateless-function": "off",
 		"react/destructuring-assignment": 0,
 		"react/jsx-props-no-spreading": 0,
@@ -22,10 +29,12 @@
 		"no-underscore-dangle": 0,
 		"import/imports-first": ["error", "absolute-first"],
 		"import/newline-after-import": "error",
+		"import/prefer-default-export": 0,
 		"import/no-extraneous-dependencies": 0,
 		"import/no-dynamic-require": 0,
 		"react/forbid-prop-types": 0,
 		"react/no-danger": "off",
+		"react/no-deprecated": "off",
 		"no-console": "off",
 		"no-param-reassign": [
 			"error",
@@ -47,6 +56,9 @@
 				"arraysInObjects": true
 			}
 		],
+		"import/extensions": [2, "never", { "web.js": "never", "json": "never" }],
+		"import/no-unresolved": [2, { "ignore": ["antd"] }],
+		"no-plusplus": 0,
 		"jsx-a11y/label-has-for": 0,
 		"quotes": ["error", "single"],
 		"global-require": 0,

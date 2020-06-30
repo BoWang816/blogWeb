@@ -16,19 +16,19 @@ const responsiveSearch = { xxl: 4, xl: 6, lg: 6, sm: 0, xs: 14 };
 const responsiveMenu = { xxl: 17, xl: 14, lg: 14, sm: 20, xs: 0 };
 
 export default class HeaderArea extends Component {
-	render() {
-		return (
-			<Row>
-				<Col {...responsiveLogo}>
-					<Logo />
-				</Col>
-				<Col {...responsiveSearch}>
-					<Search />
-				</Col>
-				<Col {...responsiveMenu} className="menu-area">
-					<MenuArea />
-				</Col>
-			</Row>
-		);
-	}
+    render() {
+        return (
+            <Row>
+                <Col {...responsiveLogo}>
+                    <Logo />
+                </Col>
+                <Col {...responsiveSearch}>
+                    <Search />
+                </Col>
+                <Col {...responsiveMenu} className="menu-area">
+                    <MenuArea />
+                </Col>
+            </Row>
+        );
+    }
 }

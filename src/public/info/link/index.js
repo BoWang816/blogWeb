@@ -10,29 +10,29 @@ import { GithubOutlined, ZhihuOutlined } from '@ant-design/icons';
 import './style.less';
 
 export default class Link extends Component {
-	render() {
-		const LinkList = [
-			{
-				name: 'Github',
-				icon: <GithubOutlined />,
-				link: '',
-			},
-			{
-				name: '知乎',
-				icon: <ZhihuOutlined />,
-				link: '',
-			},
-		];
-		return (
-			<ul className="link-count">
-				{LinkList.map(item => {
-					return (
-						<li className="link-item" key={item.link}>
-							{item.icon}
-						</li>
-					);
-				})}
-			</ul>
-		);
-	}
+    render() {
+        const LinkList = [
+            {
+                name: 'Github',
+                icon: <GithubOutlined />,
+                link: ''
+            },
+            {
+                name: '知乎',
+                icon: <ZhihuOutlined />,
+                link: ''
+            }
+        ];
+        return (
+            <ul className="link-count">
+                {LinkList.map(item => {
+                    return (
+                        <li className="link-item" key={item.link}>
+                            {item.icon}
+                        </li>
+                    );
+                })}
+            </ul>
+        );
+    }
 }

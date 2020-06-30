@@ -7,7 +7,7 @@
 import React, { Component } from 'react';
 
 export default class ArticlePage extends Component {
-	render() {
-		return <div>我是文章详情页面</div>;
-	}
+    render() {
+        return <div>我是文章详情页面</div>;
+    }
 }

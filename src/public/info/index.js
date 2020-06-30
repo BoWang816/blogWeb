@@ -12,21 +12,21 @@ import Link from './link';
 import Tags from './tags';
 
 export default class InfoArea extends Component {
-	render() {
-		return (
-			<section style={{ padding: '20px 0' }}>
-				<Author />
-				<Divider dashed style={{ margin: '10px 0' }} />
-				<Count />
-				<Divider orientation="left" style={{ fontSize: '14px', margin: '20px 0 4px 0' }}>
-					文章标签
-				</Divider>
-				<Tags />
-				<Divider orientation="left" style={{ fontSize: '14px', margin: '20px 0 4px 0' }}>
-					我的链接
-				</Divider>
-				<Link path={null} />
-			</section>
-		);
-	}
+    render() {
+        return (
+            <section style={{ padding: '20px 0' }}>
+                <Author />
+                <Divider dashed style={{ margin: '10px 0' }} />
+                <Count />
+                <Divider orientation="left" style={{ fontSize: '14px', margin: '20px 0 4px 0' }}>
+                    文章标签
+                </Divider>
+                <Tags />
+                <Divider orientation="left" style={{ fontSize: '14px', margin: '20px 0 4px 0' }}>
+                    我的链接
+                </Divider>
+                <Link path={null} />
+            </section>
+        );
+    }
 }

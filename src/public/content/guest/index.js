@@ -8,11 +8,11 @@ import React, { Component } from 'react';
 import CommentArea from '@components/comment';
 
 export default class GuestPage extends Component {
-	render() {
-		return (
-			<div style={{ height: '100%', overflow: 'auto' }}>
-				<CommentArea />
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div style={{ height: '100%', overflow: 'auto' }}>
+                <CommentArea />
+            </div>
+        );
+    }
 }

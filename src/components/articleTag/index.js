@@ -12,38 +12,38 @@ import { EyeOutlined, TagsTwoTone, FolderOutlined, CommentOutlined } from '@ant-
 import { TAG_COLOR } from '@constants';
 
 export default class ArticleTag extends Component {
-	render() {
-		const { tagList, categoryList, viewCount, comments } = this.props;
-		return (
-			<>
-				<CommentOutlined />
-				<span style={{ marginRight: 5 }}> {calcCommentsCount(comments)}</span>
-				<EyeOutlined />
-				<span>{viewCount}</span>
+    render() {
+        const { tagList, categoryList, viewCount, comments } = this.props;
+        return (
+            <>
+                <CommentOutlined />
+                <span style={{ marginRight: 5 }}> {calcCommentsCount(comments)}</span>
+                <EyeOutlined />
+                <span>{viewCount}</span>
 
-				{tagList.length > 0 && (
-					<>
-						<Divider type="vertical" style={{ marginRight: 7 }} />
-						<TagsTwoTone style={{ marginRight: '5px' }} />
-						{tagList.map(tag => (
-							<Tag key={tag} color={TAG_COLOR[Math.floor(Math.random() * 10 + 1)]}>
-								<Link to={`/tags/${tag}`}>{tag}</Link>
-							</Tag>
-						))}
-					</>
-				)}
-				{categoryList.length > 0 && (
-					<>
-						<Divider type="vertical" style={{ marginRight: 7 }} />
-						<FolderOutlined style={{ marginRight: '5px' }} />
-						{categoryList.map(cate => (
-							<Tag key={cate} color={TAG_COLOR[Math.floor(Math.random() * 10 + 1)]}>
-								<Link to={`/categories/${cate}`}>{cate}</Link>
-							</Tag>
-						))}
-					</>
-				)}
-			</>
-		);
-	}
+                {tagList.length > 0 && (
+                    <>
+                        <Divider type="vertical" style={{ marginRight: 7 }} />
+                        <TagsTwoTone style={{ marginRight: '5px' }} />
+                        {tagList.map(tag => (
+                            <Tag key={tag} color={TAG_COLOR[Math.floor(Math.random() * 10 + 1)]}>
+                                <Link to={`/tags/${tag}`}>{tag}</Link>
+                            </Tag>
+                        ))}
+                    </>
+                )}
+                {categoryList.length > 0 && (
+                    <>
+                        <Divider type="vertical" style={{ marginRight: 7 }} />
+                        <FolderOutlined style={{ marginRight: '5px' }} />
+                        {categoryList.map(cate => (
+                            <Tag key={cate} color={TAG_COLOR[Math.floor(Math.random() * 10 + 1)]}>
+                                <Link to={`/categories/${cate}`}>{cate}</Link>
+                            </Tag>
+                        ))}
+                    </>
+                )}
+            </>
+        );
+    }
 }

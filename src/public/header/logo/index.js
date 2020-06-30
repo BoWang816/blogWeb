@@ -8,15 +8,15 @@ import React, { Component } from 'react';
 import './style.less';
 
 export default class Logo extends Component {
-	render() {
-		return (
-			<div className="logo">
-				<a href="/" className="brand" rel="start">
-					<span className="site-title" style={{ opacity: '1', top: 0 }}>
-						恪晨的小站
-					</span>
-				</a>
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div className="logo">
+                <a href="/" className="brand" rel="start">
+                    <span className="site-title" style={{ opacity: '1', top: 0 }}>
+                        恪晨的小站
+                    </span>
+                </a>
+            </div>
+        );
+    }
 }
