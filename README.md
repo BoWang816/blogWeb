@@ -5,6 +5,8 @@
 
 ### 博客前端项目模版
 
+> 这是一个博客的模版项目，使用了React + Mobx + react-router + Ant Design技术
+
 ### 🏠 [Homepage](https://github.com/BoWang816/blogWeb)
 
 ### ✨ [Demo](https://web.wangboweb.ml)
@@ -21,9 +23,14 @@ npm install
 npm run start
 ```
 
-##
+## view
 ```html
 http://localhost:3000
+```
+
+## build
+```sh
+npm run build
 ```
 
 ## Author
@@ -56,3 +63,9 @@ _This README was generated with ❤️ by [readme-md-generator](https://github.c
 
 ### 留言板
 ![img.png](demoImg/guest.png)
+
+### 打包速度
+![img.png](demoImg/speed.png)
+
+### 打包大小
+![img.png](demoImg/package.png)
